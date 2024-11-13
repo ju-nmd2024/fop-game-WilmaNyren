@@ -1,5 +1,5 @@
 let y = 50;
-let x = 200;
+let x = 280;
 
 let velocityY = 0.5;
 let acceleration = 0.5;
@@ -8,12 +8,32 @@ let gameState = "true";
 function setup() {
   createCanvas(600, 650);
 }
+function gameStart() {
+  background(153, 179, 255);
+  stroke(255);
+  strokeWeight(5);
+  fill(25, 80, 255);
+  rect(120, 190, 370, 200, 10);
+  noStroke();
+  textSize(60);
+  fill(255);
+  text("Game Over", 150, 260, 500);
+  //button
+  stroke(255);
+  strokeWeight(4);
+  fill(25, 80, 247);
+  rect(190, 420, 220, 50, 10);
+  fill(255);
+  textSize(30);
+  strokeWeight(1);
+  text("Play Again", 228, 430, 500, 100);
+}
 
 // character
 function angel(x, y) {
   //to shange scale of the angel
   push();
-  scale(1);
+  scale(0.8);
   //wings rhigt
   stroke(100);
   strokeWeight(3);
@@ -81,7 +101,7 @@ function angel(x, y) {
 function angelWingDown(x, y) {
   //to shange scale of the angel
   push();
-  scale(1);
+  scale(0.8);
   //wings rhigt
   stroke(100);
   strokeWeight(3);
@@ -168,8 +188,11 @@ function gameOverScreen() {
   text("Play Again", 228, 430, 500, 100);
 }
 
+
 function draw() {
   background(153, 211, 255);
+  gameStart();
+  
   angel(x, y);
   let gameState = "true";
 
@@ -182,18 +205,20 @@ function draw() {
     clear ();
     background(153, 211, 255);
     angelWingDown (x,y);
-    
-    
   }
   
 
   //game over
-  if (y >= 715) {
+  if (y >= 650) {
     gameState = false;
     console.log("game over");
     gameOverScreen();
-    // make button later
+    velocityY=0;
+    angel(x,y); //den försvan annars 
   }
+
+
+
 }
 
 
