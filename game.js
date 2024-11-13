@@ -192,13 +192,10 @@ function gameOverScreen() {
 function draw() {
   background(153, 211, 255);
   //gameStart();
+  let gameState = "true";
+  angel(angelX,angelY);
   
-  //if (mouseX >= 190 && mouseX <= 406 && mouseY >=420 && mouseY <= 470 && mouseIsPressed === true){
-  //angel(x,y);
-  //let gameState = "true";
-  //}
 
-  
 
   if (gameState === "true") {
     angelY = angelY + velocityY;
@@ -220,10 +217,10 @@ function draw() {
     velocityY=0;
     angel(angelX,angelY); //den försvan annars 
   }
-  //if (mouseX >= 190 && mouseX <= 406 && mouseY >=420 && mouseY <= 470 && mouseIsPressed === true){
-       
-  //}
+  
 }
+
+
 
 
 
