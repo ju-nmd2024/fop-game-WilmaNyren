@@ -1,22 +1,15 @@
 let angelY = 50;
-let angelX = 300;
-let backX = 100;
-let backY = 100;
+let angelX = 275;
 
 let velocityY = 1;
 let acceleration = 0.5;
 let gameState = "true";
 
-
 function setup() {
-  createCanvas(600, 700);
+  createCanvas(600, 650);
 }
 
-function draw() {
-  background(153, 211, 255);
-  angel(angelX,angelY);
-}
-
+// character
 function angel(x,y){
   //to shange scale of the angel
   push();
@@ -83,4 +76,38 @@ function angel(x,y){
   ellipse(x+85,y+40,2);
   ellipse(x+115,y+40,2);
   pop();
+}
+
+//game-over scren
+function gameOverScreen(){
+  stroke(255);
+  strokeWeight(5);
+  fill(200, 50, 50);
+  rect(120,190,370,200, 10);
+  noStroke();
+  textSize(60);
+  fill(255);
+  text("Game Over", 150,260, 500);
+  }
+
+function draw() {
+  background(153, 211, 255);
+  angel(angelX,angelY);
+
+
+  if (gameState === "true" && keyCode===40){
+    angelY = angelY + velocityY;
+      velocityY = velocityY + acceleration;
+} 
+
+
+//game over
+if (angelY > 650){
+  gameState = false;
+  console.log("game over");
+  gameOverScreen();
+}
+
+
+
 }

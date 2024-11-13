@@ -109,17 +109,19 @@ if (angelY > 750){
 }
 
 }
-//function keyIsClicked(){
-//if (keyCode === 38) {
-    //acceleration = acceleration -0.5; // ???? idk man....
+function keyIsClicked(){
+if (keyCode === 38) {
+    acceleration = acceleration -0.5; // ???? idk man....
 
-//}
-////if (keyCode ===39){
-    //angelX = angelX +20;
-//}
+}
+if (keyCode ===39){
+    angelX = angelX +20;
+}
 
-//if (keyCode ===37){
-    //angelX = angelX -20;
-//}
+if (keyCode ===37){
+    angelX = angelX -20;
+}
 
-//}
+}
+
+
