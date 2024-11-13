@@ -1,5 +1,5 @@
-let y = 50;
-let x = 280;
+let angelY = 50;
+let angelX = 280;
 
 let velocityY = 0.5;
 let acceleration = 0.5;
@@ -15,9 +15,9 @@ function gameStart() {
   fill(25, 80, 255);
   rect(120, 190, 370, 200, 10);
   noStroke();
-  textSize(60);
+  textSize(55);
   fill(255);
-  text("Game Over", 150, 260, 500);
+  text("Angel Lander", 140, 260, 600);
   //button
   stroke(255);
   strokeWeight(4);
@@ -26,7 +26,7 @@ function gameStart() {
   fill(255);
   textSize(30);
   strokeWeight(1);
-  text("Play Again", 228, 430, 500, 100);
+  text("Click to Play", 215, 430, 500, 100);
 }
 
 // character
@@ -191,36 +191,39 @@ function gameOverScreen() {
 
 function draw() {
   background(153, 211, 255);
-  gameStart();
+  //gameStart();
   
-  angel(x, y);
-  let gameState = "true";
+  //if (mouseX >= 190 && mouseX <= 406 && mouseY >=420 && mouseY <= 470 && mouseIsPressed === true){
+  //angel(x,y);
+  //let gameState = "true";
+  //}
+
+  
 
   if (gameState === "true") {
-    y = y + velocityY;
+    angelY = angelY + velocityY;
     velocityY = velocityY + acceleration;
   }
   if (keyIsDown(38)) {
     velocityY = velocityY - 2;
     clear ();
     background(153, 211, 255);
-    angelWingDown (x,y);
+    angelWingDown (angelX,angelY);
   }
   
 
   //game over
-  if (y >= 650) {
+  if (angelY >= 650) {
     gameState = false;
     console.log("game over");
     gameOverScreen();
     velocityY=0;
-    angel(x,y); //den försvan annars 
+    angel(angelX,angelY); //den försvan annars 
   }
-
-
-
+  //if (mouseX >= 190 && mouseX <= 406 && mouseY >=420 && mouseY <= 470 && mouseIsPressed === true){
+       
+  //}
 }
-
 
 
 
