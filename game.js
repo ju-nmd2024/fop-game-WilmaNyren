@@ -194,7 +194,7 @@ function draw() {
   //gameStart();
   let gameState = "true";
   angel(angelX,angelY);
-  
+
 
 
   if (gameState === "true") {
@@ -219,9 +219,6 @@ function draw() {
   }
   
 }
-
-
-
 
 
 
