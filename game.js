@@ -3,11 +3,53 @@ let angelX = 280;
 
 let velocityY = 0.5;
 let acceleration = 0.5;
-let gameState = "true";
+//let gameState = "true";
 
 function setup() {
   createCanvas(600, 650);
 }
+
+function draw() {
+  background(153, 211, 255);
+  let gameState = false;
+  if (gameState === false) {
+    gameStart();
+
+    //button
+    if (
+      mouseX >= 190 &&
+      mouseX <= 410 &&
+      mouseY >= 420 &&
+      mouseY <= 470 &&
+      mouseClicked === true
+    ) {
+      let gameState = "true";
+      angel(angelX, angelY);
+
+      if (gameState === "true") {
+        angelY = angelY + velocityY;
+        velocityY = velocityY + acceleration;
+      }
+      if (keyIsDown(38)) {
+        velocityY = velocityY - 1;
+        clear();
+        background(153, 211, 255);
+        angelWingDown(angelX, angelY);
+
+        //gameStart = false;
+      }
+    }
+  }
+
+  //game over
+  if (angelY >= 680) {
+    gameState = false;
+    console.log("game over");
+    //gameOverScreen();
+    angel(x, y);
+  }
+}
+
 function gameStart() {
   background(153, 179, 255);
   stroke(255);
@@ -188,34 +230,23 @@ function gameOverScreen() {
   text("Play Again", 228, 430, 500, 100);
 }
 
-
-function draw() {
-  background(153, 211, 255);
-  //gameStart();
-  let gameState = "true";
-  angel(angelX,angelY);
-
-  if (gameState === "true") {
-    angelY = angelY + velocityY;
-    velocityY = velocityY + acceleration;
-  }
-  if (keyIsDown(38)) {
-    velocityY = velocityY - 2;
-    clear ();
-    background(153, 211, 255);
-    angelWingDown (angelX,angelY);
-  }
-  
-
-  //game over
-  if (angelY >= 650) {
-    gameState = false;
-    console.log("game over");
-    gameOverScreen();
-    velocityY=0;
-    angel(angelX,angelY); //den försvan annars 
-  }
-  
+function gameWin() {
+  background(153, 179, 255);
+  stroke(255);
+  strokeWeight(5);
+  fill(200, 50, 50);
+  rect(120, 190, 370, 200, 10);
+  noStroke();
+  textSize(60);
+  fill(255);
+  text("You WIN", 150, 260, 500);
+  //button
+  stroke(255);
+  strokeWeight(4);
+  fill(200, 50, 50);
+  rect(190, 420, 220, 50, 10);
+  fill(255);
+  textSize(30);
+  strokeWeight(1);
+  text("Play Again", 228, 430, 500, 100);
 }
-
-
