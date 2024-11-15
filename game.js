@@ -3,51 +3,62 @@ let angelX = 280;
 
 let velocityY = 0.5;
 let acceleration = 0.5;
-//let gameState = "true";
+let gameState = "start";
+
+
 
 function setup() {
   createCanvas(600, 650);
 }
+function mouseClicked (){
+if (gameState === "start"){
+  gameState = "game";
+} else if (gameState === "game"){
+  gameState = "end";
+} else if ( gameState === "end"){
+  gameState = "game";
+}
+
+
+}
 
 function draw() {
-  background(153, 211, 255);
-  let gameState = false;
-  if (gameState === false) {
+
+
+  if (gameState === "start") {
     gameStart();
+  
+} 
+  //logic
+  if (gameState === "game") {
+    angelY = angelY + velocityY;
+    velocityY = velocityY + acceleration;
+  }
+  if (gameState === "game"){
+    clear();
+    background(153, 211, 255);
+    angel(angelX, angelY);
 
-    //button
-    if (
-      mouseX >= 190 &&
-      mouseX <= 410 &&
-      mouseY >= 420 &&
-      mouseY <= 470 &&
-      mouseClicked === true
-    ) {
-      let gameState = "true";
-      angel(angelX, angelY);
+  }
+  // upp motion
+  if (keyIsDown(38)) {
+    velocityY = velocityY - 1;
+    clear();
+    background(153, 211, 255);
+    angelWingDown(angelX, angelY);
 
-      if (gameState === "true") {
-        angelY = angelY + velocityY;
-        velocityY = velocityY + acceleration;
-      }
-      if (keyIsDown(38)) {
-        velocityY = velocityY - 1;
-        clear();
-        background(153, 211, 255);
-        angelWingDown(angelX, angelY);
-
-        //gameStart = false;
-      }
-    }
+    //gameStart = false;
   }
 
-  //game over
+
   if (angelY >= 680) {
-    gameState = false;
+    gameState = "end";
     console.log("game over");
-    //gameOverScreen();
-    angel(x, y);
+    gameOverScreen();
+    angel(angelX, angelY);
   }
+
+
 }
 
 function gameStart() {
