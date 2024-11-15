@@ -195,8 +195,6 @@ function draw() {
   let gameState = "true";
   angel(angelX,angelY);
 
-
-
   if (gameState === "true") {
     angelY = angelY + velocityY;
     velocityY = velocityY + acceleration;
@@ -219,3 +217,5 @@ function draw() {
   }
   
 }
+
+
