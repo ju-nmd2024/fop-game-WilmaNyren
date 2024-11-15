@@ -1,7 +1,7 @@
-let angelY = 50;
+let angelY = 0;
 let angelX = 280;
 
-let velocityY = 0.5;
+let velocityY = 0.3;
 let acceleration = 0.5;
 let gameState = "start";
 
@@ -47,15 +47,15 @@ function draw() {
     background(153, 211, 255);
     angelWingDown(angelX, angelY);
 
-    //gameStart = false;
+    
   }
 
 
-  if (angelY >= 680) {
+  if (angelY >= 650) {
     gameState = "end";
     console.log("game over");
     gameOverScreen();
-    angel(angelX, angelY);
+    //angel(angelX, angelY);
   }
 
 
