@@ -11,14 +11,13 @@ function setup() {
   createCanvas(600, 650);
 }
 function mouseClicked (){
-if (gameState === "start"){
-  gameState = "game";
-} else if (gameState === "game"){
-  gameState = "end";
-} else if ( gameState === "end"){
-  gameState = "game";
-}
-
+  if (gameState === "start"){
+    gameState = "game";
+  } else if (gameState === "game"){
+    gameState = "end";
+  } else if ( gameState === "end"){
+    resetgame();
+  }
 
 }
 
@@ -36,29 +35,69 @@ function draw() {
   }
   if (gameState === "game"){
     clear();
-    background(153, 211, 255);
+    backGround();
     angel(angelX, angelY);
-
+    forGround();
   }
   // upp motion
   if (keyIsDown(38)) {
     velocityY = velocityY - 1;
-    clear();
-    background(153, 211, 255);
+   
+    backGround();
     angelWingDown(angelX, angelY);
-
-    
+    forGround();
+    console.log(acceleration);
   }
 
-
-  if (angelY >= 650) {
+  if (angelY >= 600) {
     gameState = "end";
     console.log("game over");
-    gameOverScreen();
+    
+    //backGround();
     //angel(angelX, angelY);
+    //forGround();
+    //angelY = angelY + velocityY;
+    //velocityY = velocityY + acceleration;
+    gameOverScreen();
   }
 
+}
 
+// With help from Vedang Chandode 
+function resetgame(){
+  angelY = 0;
+  velocityY = 0.3;
+  gameState = "game"; 
+
+
+}
+
+
+function backGround (){
+  background(153, 211, 255);
+  noStroke();
+  fill (255);
+  ellipse(300,590,200,150);
+  ellipse(160,620,200,150);
+  ellipse(450,620,200,150);
+  
+  fill(255, 204, 249);
+  ellipse(300,620,180,150);
+  ellipse(170,640,180,150);
+  ellipse(440,640,180,150);
+}
+
+function forGround (){
+  fill(255, 204, 249);
+  ellipse(300,615,180,150);
+  ellipse(170,640,180,150);
+  ellipse(440,640,180,150);
+  
+  fill(255);
+  ellipse(300,625,180,150);
+  ellipse(160,645,180,150);
+  ellipse(450,645,180,150);
+  
 }
 
 function gameStart() {
@@ -82,7 +121,6 @@ function gameStart() {
   text("Click to Play", 215, 430, 500, 100);
 }
 
-// character
 function angel(x, y) {
   //to shange scale of the angel
   push();
@@ -150,7 +188,7 @@ function angel(x, y) {
   ellipse(x + 115, y + 40, 2);
   pop();
 }
-
+//charakter but animated
 function angelWingDown(x, y) {
   //to shange scale of the angel
   push();
@@ -240,7 +278,7 @@ function gameOverScreen() {
   strokeWeight(1);
   text("Play Again", 228, 430, 500, 100);
 }
-
+//win sceen
 function gameWin() {
   background(153, 179, 255);
   stroke(255);
