@@ -146,7 +146,7 @@ function gameStart() {
   fill(255);
   textSize(30);
   strokeWeight();
-  text("Click anywere to Play Again", 123, 415, 500, 100);
+  text("Click anywere to Play", 160, 415, 500, 100);
   
 }
 function halo (x,y){

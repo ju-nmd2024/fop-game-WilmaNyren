@@ -1,19 +1,14 @@
-let angelY = 50;
-let angelX = 300;
-let backX = 100;
-let backY = 100;
 
-let velocityY = 1;
-let acceleration = 0.5;
-let gameState = "true";
-
+let y = 50;
+let x = 100;
 //angel
-function angel(x, y) {
+background(153, 179, 255);
   //to shange scale of the angel
   push();
-  scale(0.7);
+  scale(1);
   //wings rhigt
   stroke(100);
+  strokeWeight(3);
   fill(255);
   push();
   translate(x + 100, y + 71);
@@ -73,45 +68,9 @@ function angel(x, y) {
   ellipse(x + 85, y + 40, 2);
   ellipse(x + 115, y + 40, 2);
   pop();
-}
 
-//game-over scren
-function gameOverScreen() {
-  fill(156, 5, 5);
-  rect(0, 0, 600);
-  textSize(60);
-  fill(255);
-  text("Game Over", 150, 260, 500);
-}
 
-function draw() {
-  createCanvas(600, 600);
-  clear();
-  background(153, 211, 255); // backrgound dissapeard after clear
-  angel(x, angelY);
 
-  //fall
-  if (gameState === "true" && keyCode === 40) {
-    angelY = angelY + velocityY;
-    velocityY = velocityY + acceleration;
-  }
 
-  //game over
-  if (angelY > 750) {
-    gameState = false;
-    console.log("game over");
-    //gameOverScreen();
-  }
-}
-function keyIsClicked() {
-  if (keyCode === 38) {
-    acceleration = acceleration - 0.5; // ???? idk man....
-  }
-  if (keyCode === 39) {
-    x = x + 20;
-  }
 
-  if (keyCode === 37) {
-    x = x - 20;
-  }
-}
+
