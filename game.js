@@ -2,7 +2,7 @@ let angelY = 0;
 let angelX = 280;
 
 let velocityY = angelY + 0.1;
-let acceleration = 0.5;
+let acceleration = 0.3;
 let gameState = "start";
 
 
@@ -42,7 +42,7 @@ function draw() {
   }
   // upp motion
   if (keyIsDown(38)) {
-    velocityY = velocityY - 1;
+    velocityY = velocityY - 1.3;
    
     backGround();
     angelWingDown(angelX, angelY);
@@ -50,10 +50,16 @@ function draw() {
     
   }
 
-  if (angelY >= 600) {
+  if (angelY >= 600 && velocityY > 5) {
+    clear();
     gameState = "end";
     console.log("game over");
     gameOverScreen();
+  }else if (angelY >= 525 && velocityY < 5) {
+    gameState = "end";
+    console.log("game over");
+    gameWin();
+    
   }
 
 }
@@ -97,23 +103,24 @@ function forGround (){
 
 function gameStart() {
   background(153, 179, 255);
-  stroke(255);
-  strokeWeight(5);
-  fill(25, 80, 255);
-  rect(120, 190, 370, 200, 10);
+  //clowd
+  backGround();
+  forGround();
+
   noStroke();
+  fill(255, 204, 249);
+  rect(120, 190, 370, 200, 10);
+  stroke(255);
+  strokeWeight(2);
   textSize(55);
   fill(255);
-  text("Angel Lander", 140, 260, 600);
-  //button
-  stroke(255);
-  strokeWeight(4);
-  fill(25, 80, 247);
-  rect(190, 420, 220, 50, 10);
+  text("Angel Lander", 140, 265, 500,200);
+  //text
   fill(255);
   textSize(30);
-  strokeWeight(1);
-  text("Click to Play", 215, 430, 500, 100);
+  strokeWeight();
+  text("Click anywere to Play Again", 123, 415, 500, 100);
+
 }
 
 function angel(x, y) {
@@ -255,42 +262,50 @@ function angelWingDown(x, y) {
 //game-over scren
 function gameOverScreen() {
   background(153, 179, 255);
-  stroke(255);
+  //clowd
+  backGround();
+  forGround();
+
+  noStroke();
   strokeWeight(5);
   fill(200, 50, 50);
   rect(120, 190, 370, 200, 10);
-  noStroke();
   textSize(60);
   fill(255);
   text("Game Over", 150, 260, 500);
-  //button
-  stroke(255);
-  strokeWeight(4);
-  fill(200, 50, 50);
-  rect(190, 420, 220, 50, 10);
+  //text
   fill(255);
   textSize(30);
   strokeWeight(1);
-  text("Play Again", 228, 430, 500, 100);
+  text("Click anywere to Play Again", 123, 415, 500, 100);
+
+
+
 }
 //win sceen
 function gameWin() {
   background(153, 179, 255);
-  stroke(255);
-  strokeWeight(5);
-  fill(200, 50, 50);
+
+   //clowd
+   backGround();
+   forGround();
+
+  noStroke();
+  
+  fill(255, 204, 249);
   rect(120, 190, 370, 200, 10);
   noStroke();
-  textSize(60);
+  textSize(70);
+  strokeWeight(5);
   fill(255);
-  text("You WIN", 150, 260, 500);
+  text("YOU WIN!", 142, 260, 500);
   //button
   stroke(255);
-  strokeWeight(4);
-  fill(200, 50, 50);
-  rect(190, 420, 220, 50, 10);
+  
   fill(255);
   textSize(30);
   strokeWeight(1);
-  text("Play Again", 228, 430, 500, 100);
+  text("Click anywere to Play Again", 123, 415, 500, 100);
+
+
 }
