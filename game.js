@@ -33,14 +33,14 @@ function draw() {
     halo(haloX,haloY);
     if (direction === "upp")
       if (haloY > 70){
-        haloY = haloY -0.5; 
+        haloY = haloY -0.2; 
       } else {
         direction = "down"; 
       } 
       
       if (direction === "down"){
         if(haloY < 100){
-          haloY = haloY +0.5; 
+          haloY = haloY +0.2; 
       } else {
         direction = "upp";
       }
