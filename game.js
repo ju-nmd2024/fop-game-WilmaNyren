@@ -1,6 +1,10 @@
 let angelY = 0;
 let angelX = 280;
 
+let haloX = 100;
+let haloY = 100;
+let direction = "upp";
+
 let velocityY = angelY + 0.1;
 let acceleration = 0.3;
 let gameState = "start";
@@ -26,8 +30,29 @@ function draw() {
 
   if (gameState === "start") {
     gameStart();
+    halo(haloX,haloY);
+    if (direction === "upp")
+      if (haloY > 70){
+        haloY = haloY -0.5; 
+      } else {
+        direction = "down"; 
+      } 
+      
+      if (direction === "down"){
+        if(haloY < 100){
+          haloY = haloY +0.5; 
+      } else {
+        direction = "upp";
+      }
+    }
+
+  }
+
   
-} 
+  
+
+
+
   //logic
   if (gameState === "game") {
     angelY = angelY + velocityY;
@@ -122,6 +147,14 @@ function gameStart() {
   textSize(30);
   strokeWeight();
   text("Click anywere to Play Again", 123, 415, 500, 100);
+  
+}
+function halo (x,y){
+  //halo
+  strokeWeight(15);
+  stroke(255, 204, 249);
+  noFill();
+  ellipse(haloX+200,haloY +45, 150,30);
 
 }
 
@@ -269,14 +302,14 @@ function gameOverScreen() {
   forGround();
 
   noStroke();
-  strokeWeight(5);
   fill(200, 50, 50);
   rect(120, 190, 370, 200, 10);
+  stroke(255);
+  strokeWeight(2);
   textSize(60);
   fill(255);
   text("Game Over", 150, 260, 500);
   //text
-  fill(255);
   textSize(30);
   strokeWeight(1);
   text("Click anywere to Play Again", 123, 415, 500, 100);
@@ -293,12 +326,11 @@ function gameWin() {
    forGround();
 
   noStroke();
-  
   fill(255, 204, 249);
   rect(120, 190, 370, 200, 10);
-  noStroke();
+  stroke(255);
   textSize(70);
-  strokeWeight(5);
+  strokeWeight(4);
   fill(255);
   text("YOU WIN!", 142, 260, 500);
   //button
