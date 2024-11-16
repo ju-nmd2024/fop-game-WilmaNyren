@@ -8,7 +8,7 @@ let gameState = "start";
 
 
 function setup() {
-  createCanvas(600, 650);
+  createCanvas(600, 750);
 }
 function mouseClicked (){
   if (gameState === "start"){
@@ -41,8 +41,8 @@ function draw() {
     //console.log(velocityY);
   }
   // upp motion
-  if (keyIsDown(38)) {
-    velocityY = velocityY - 1.3;
+  if (keyIsDown(32)) {
+    velocityY = velocityY - 1;
    
     backGround();
     angelWingDown(angelX, angelY);
@@ -50,12 +50,12 @@ function draw() {
     
   }
 
-  if (angelY >= 600 && velocityY > 5) {
+  if (angelY >= 800 && velocityY > 6) {
     clear();
     gameState = "end";
     console.log("game over");
     gameOverScreen();
-  }else if (angelY >= 525 && velocityY < 5) {
+  }else if (angelY >= 525 && velocityY < 6) {
     gameState = "end";
     console.log("game over");
     gameWin();
@@ -98,6 +98,8 @@ function forGround (){
   ellipse(300,625,180,150);
   ellipse(160,645,180,150);
   ellipse(450,645,180,150);
+  ellipse(300,660,250,150);
+
   
 }
 
