@@ -16,10 +16,10 @@ while (count < width){
 }
 
 //console log did not work here :(( but did in the game doc...
-//while (count < 7) {
-  //console.log(count);
-  //count = count + 1;
-//}
+while (count < 7) {
+  console.log(count);
+  count = count + 1;
+}
 
 //cirkels
 for (let sit = 0; sit < width; sit++){
@@ -29,7 +29,7 @@ for (let sit = 0; sit < width; sit++){
 let x = 0;
 let count2 = 5;
 
-while (count2 > 3){
+while (count2 >4){
    x += 1;
    count2 -= 1;
 }
