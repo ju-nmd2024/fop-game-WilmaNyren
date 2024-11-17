@@ -26,7 +26,7 @@ function mouseClicked (){
 }
 
 function draw() {
-
+  
 
   if (gameState === "start") {
     gameStart();
@@ -63,7 +63,8 @@ function draw() {
     backGround();
     angel(angelX, angelY);
     forGround();
-    //console.log(velocityY);
+    display();
+    
   }
   // upp motion
   if (keyIsDown(32)) {
@@ -72,6 +73,8 @@ function draw() {
     backGround();
     angelWingDown(angelX, angelY);
     forGround();
+    display();
+
     
   }
 
@@ -86,6 +89,15 @@ function draw() {
     gameWin();
     
   }
+  
+
+}
+
+function display(){
+  fill(255);
+  textSize (25);
+  text("Speed:" + velocityY.toFixed (1), 50, 30, 500, 100);
+
 
 }
 
