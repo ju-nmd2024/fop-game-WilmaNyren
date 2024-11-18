@@ -14,6 +14,8 @@ let gameState = "start";
 function setup() {
   createCanvas(600, 750);
 }
+
+//garits tutoriel
 function mouseClicked (){
   if (gameState === "start"){
     gameState = "game";
@@ -27,7 +29,7 @@ function mouseClicked (){
 
 function draw() {
   
-
+//start screen
   if (gameState === "start") {
     gameStart();
     halo(haloX,haloY);
@@ -48,12 +50,7 @@ function draw() {
 
   }
 
-  
-  
-
-
-
-  //logic
+  //game
   if (gameState === "game") {
     angelY = angelY + velocityY;
     velocityY = velocityY + acceleration;
@@ -64,7 +61,6 @@ function draw() {
     angel(angelX, angelY);
     forGround();
     display();
-    
   }
   // upp motion
   if (keyIsDown(32)) {
@@ -73,32 +69,26 @@ function draw() {
     backGround();
     angelWingDown(angelX, angelY);
     forGround();
-    display();
-
-    
+    display(); 
   }
-
+//lose
   if (angelY >= 800 && velocityY > 6) {
     clear();
     gameState = "end";
     console.log("game over");
     gameOverScreen();
+//win
   }else if (angelY >= 525 && velocityY < 6) {
     gameState = "end";
-    console.log("game over");
+    console.log("congrats!!! :)))");
     gameWin();
-    
   }
-  
-
 }
 
 function display(){
   fill(255);
   textSize (25);
   text("Speed:" + velocityY.toFixed (1), 50, 30, 500, 100);
-
-
 }
 
 // With help from Vedang Chandode 
@@ -106,10 +96,7 @@ function resetgame(){
   angelY = 0;
   velocityY = 0.3;
   gameState = "game"; 
-
-
 }
-
 
 function backGround (){
   background(153, 211, 255);
@@ -136,8 +123,6 @@ function forGround (){
   ellipse(160,645,180,150);
   ellipse(450,645,180,150);
   ellipse(300,660,250,150);
-
-  
 }
 
 function gameStart() {
@@ -159,7 +144,6 @@ function gameStart() {
   textSize(30);
   strokeWeight();
   text("Click anywere to Play", 160, 415, 500, 100);
-  
 }
 function halo (x,y){
   //halo
