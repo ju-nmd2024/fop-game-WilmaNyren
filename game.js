@@ -71,6 +71,7 @@ function draw() {
     forGround();
     display(); 
   }
+  
 //lose
   if (angelY >= 800 && velocityY > 6) {
     clear();
