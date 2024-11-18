@@ -10,7 +10,6 @@ let acceleration = 0.3;
 let gameState = "start";
 
 
-
 function setup() {
   createCanvas(600, 750);
 }
@@ -24,11 +23,9 @@ function mouseClicked (){
   } else if ( gameState === "end"){
     resetgame();
   }
-
 }
 
 function draw() {
-  
 //start screen
   if (gameState === "start") {
     gameStart();
@@ -39,7 +36,6 @@ function draw() {
       } else {
         direction = "down"; 
       } 
-      
       if (direction === "down"){
         if(haloY < 100){
           haloY = haloY +0.2; 
@@ -47,9 +43,7 @@ function draw() {
         direction = "upp";
       }
     }
-
   }
-
   //game
   if (gameState === "game") {
     angelY = angelY + velocityY;
@@ -61,8 +55,8 @@ function draw() {
     angel(angelX, angelY);
     forGround();
     display();
-  }
-  // upp motion
+
+    // upp motion
   if (keyIsDown(32)) {
     velocityY = velocityY - 1;
    
@@ -71,7 +65,9 @@ function draw() {
     forGround();
     display(); 
   }
+  }
   
+
 //lose
   if (angelY >= 800 && velocityY > 6) {
     clear();
