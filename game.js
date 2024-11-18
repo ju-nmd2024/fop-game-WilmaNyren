@@ -59,7 +59,7 @@ function draw() {
     // upp motion
   if (keyIsDown(32)) {
     velocityY = velocityY - 1;
-   
+  
     backGround();
     angelWingDown(angelX, angelY);
     forGround();
@@ -142,6 +142,7 @@ function gameStart() {
   strokeWeight();
   text("Click anywere to Play", 160, 415, 500, 100);
 }
+
 function halo (x,y){
   //halo
   strokeWeight(15);
