@@ -9,36 +9,35 @@ let velocityY = angelY + 0.1;
 let acceleration = 0.3;
 let gameState = "start";
 
-
 function setup() {
   createCanvas(600, 750);
 }
 
 //garits tutoriel
-function mouseClicked (){
-  if (gameState === "start"){
+function mouseClicked() {
+  if (gameState === "start") {
     gameState = "game";
-  } else if (gameState === "game"){
+  } else if (gameState === "game") {
     gameState = "end";
-  } else if ( gameState === "end"){
+  } else if (gameState === "end") {
     resetgame();
   }
 }
 
 function draw() {
-//start screen
+  //start screen
   if (gameState === "start") {
     gameStart();
-    halo(haloX,haloY);
-    if (direction === "upp")
-      if (haloY > 70){
-        haloY = haloY -0.2; 
+    halo(haloX, haloY);
+    if (direction === "upp") 
+      if (haloY > 70) {
+        haloY = haloY - 0.2;
       } else {
-        direction = "down"; 
-      } 
-      if (direction === "down"){
-        if(haloY < 100){
-          haloY = haloY +0.2; 
+        direction = "down";
+      }
+    if (direction === "down") {
+      if (haloY < 100) {
+        haloY = haloY + 0.2;
       } else {
         direction = "upp";
       }
@@ -49,7 +48,7 @@ function draw() {
     angelY = angelY + velocityY;
     velocityY = velocityY + acceleration;
   }
-  if (gameState === "game"){
+  if (gameState === "game") {
     clear();
     backGround();
     angel(angelX, angelY);
@@ -57,69 +56,68 @@ function draw() {
     display();
 
     // upp motion
-  if (keyIsDown(32)) {
-    velocityY = velocityY - 1;
-  
-    backGround();
-    angelWingDown(angelX, angelY);
-    forGround();
-    display(); 
-  }
-  }
-  
+    if (keyIsDown(32)) {
+      velocityY = velocityY - 1;
 
-//lose
+      backGround();
+      angelWingDown(angelX, angelY);
+      forGround();
+      display();
+    }
+  }
+
+  //lose
   if (angelY >= 800 && velocityY > 6) {
     clear();
     gameState = "end";
     console.log("game over");
     gameOverScreen();
-//win
-  }else if (angelY >= 525 && velocityY < 6) {
+    //win
+  } else if (angelY >= 525 && velocityY < 6) {
     gameState = "end";
     console.log("congrats!!! :)))");
     gameWin();
   }
 }
-
-function display(){
+// Vedang
+function display() {
   fill(255);
-  textSize (25);
-  text("Speed:" + velocityY.toFixed (1), 50, 30, 500, 100);
+  textSize(25);
+  text("Speed:" + velocityY.toFixed(1), 50, 30, 500, 100);
 }
 
-// With help from Vedang Chandode 
-function resetgame(){
+// With help from Vedang Chandode
+function resetgame() {
   angelY = 0;
   velocityY = 0.3;
-  gameState = "game"; 
+  gameState = "game";
 }
 
-function backGround (){
+function backGround() {
   background(153, 211, 255);
   noStroke();
-  fill (255);
-  ellipse(300,590,200,150);
-  ellipse(160,620,200,150);
-  ellipse(450,620,200,150);
-  
+  fill(255);
+  ellipse(300, 590, 200, 150);
+  ellipse(160, 620, 200, 150);
+  ellipse(450, 620, 200, 150);
+
   fill(255, 204, 249);
-  ellipse(300,620,180,150);
-  ellipse(170,640,180,150);
-  ellipse(440,640,180,150);
+  ellipse(300, 620, 180, 150);
+  ellipse(170, 640, 180, 150);
+  ellipse(440, 640, 180, 150);
 }
 
-function forGround (){
+function forGround() {
   fill(255, 204, 249);
-  ellipse(300,615,180,150);
-  ellipse(170,640,180,150);
-  ellipse(440,640,180,150);
-  
+  ellipse(300, 615, 180, 150);
+  ellipse(170, 640, 180, 150);
+  ellipse(440, 640, 180, 150);
+
   fill(255);
-  ellipse(300,625,180,150);
-  ellipse(160,645,180,150);
-  ellipse(450,645,180,150);
-  ellipse(300,660,250,150);
+  ellipse(300, 625, 180, 150);
+  ellipse(160, 645, 180, 150);
+  ellipse(450, 645, 180, 150);
+  ellipse(300, 660, 250, 150);
 }
 
 function gameStart() {
@@ -135,7 +133,7 @@ function gameStart() {
   strokeWeight(2);
   textSize(55);
   fill(255);
-  text("Angel Lander", 140, 265, 500,200);
+  text("Angel Lander", 140, 265, 500, 200);
   //text
   fill(255);
   textSize(30);
@@ -143,13 +141,12 @@ function gameStart() {
   text("Click anywere to Play", 160, 415, 500, 100);
 }
 
-function halo (x,y){
+function halo(x, y) {
   //halo
   strokeWeight(15);
   stroke(255, 204, 249);
   noFill();
-  ellipse(haloX+200,haloY +45, 150,30);
-
+  ellipse(haloX + 200, haloY + 45, 150, 30);
 }
 
 function angel(x, y) {
@@ -307,17 +304,14 @@ function gameOverScreen() {
   textSize(30);
   strokeWeight(1);
   text("Click anywere to Play Again", 123, 415, 500, 100);
-
-
-
 }
 //win sceen
 function gameWin() {
   background(153, 179, 255);
 
-   //clowd
-   backGround();
-   forGround();
+  //clowd
+  backGround();
+  forGround();
 
   noStroke();
   fill(255, 204, 249);
@@ -329,11 +323,9 @@ function gameWin() {
   text("YOU WIN!", 142, 260, 500);
   //button
   stroke(255);
-  
+
   fill(255);
   textSize(30);
   strokeWeight(1);
   text("Click anywere to Play Again", 123, 415, 500, 100);
-
-
 }
