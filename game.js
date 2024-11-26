@@ -58,7 +58,6 @@ function draw() {
     // upp motion
     if (keyIsDown(32)) {
       velocityY = velocityY - 1;
-
       backGround();
       angelWingDown(angelX, angelY);
       forGround();
